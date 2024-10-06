@@ -36,6 +36,7 @@ fun BottomNavigation(items: List<BottomBarItem>, navController: NavHostControlle
         items.forEach { item ->
             NavigationBarItem(
                 icon = item.icon,
+                label = { Text(item.title) },
                 onClick = {
                     navController.navigate(route = item.route){
                         navController.graph.startDestinationRoute?.let { route ->
@@ -49,7 +50,7 @@ fun BottomNavigation(items: List<BottomBarItem>, navController: NavHostControlle
                     }
                 },
                 selected = currentDestination?.hierarchy?.any{ it.route == item.route } == true,
-                label = { Text(item.title) }
+                alwaysShowLabel = true
             )
         }
     }

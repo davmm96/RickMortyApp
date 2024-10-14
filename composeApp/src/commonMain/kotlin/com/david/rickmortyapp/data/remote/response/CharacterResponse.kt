@@ -9,13 +9,15 @@ data class CharacterResponse(
     @SerialName("id")
     val id: Int,
     val status: String,
-    val image: String
+    val image: String,
+    val name: String
 ) {
     fun toDomain(): Character {
         return Character(
             id = id,
             isAlive = status.lowercase() == "alive",
-            image = image
+            image = image,
+            name = name
         )
     }
 }
